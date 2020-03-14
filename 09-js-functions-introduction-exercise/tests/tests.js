@@ -1,9 +1,10 @@
 global.console = {
 	log: jest.fn(),
 	info: jest.fn(),
-	error: jest.fn()
+	error: jest.fn(),
+	warn: jest.fn()
 };
-
+global.alert= jest.fn()
 // Exercise 1
 describe("myFavoriteAnimal", () => {
 	test("myFavoriteAnimal is declared and has value with type 'string'", () => {
@@ -15,7 +16,7 @@ describe("myFavoriteAnimal", () => {
 // Exercise 2
 describe("myAnimalWithLog", () => {
 	test("myAnimalWithLog is declared and log a string with your favorite animal", () => {
-		myAnimalWithLog();
+		myAnimalWithLog(myFavoriteAnimal);
 
 		expect(global.console.log).toHaveBeenCalledWith(
 			"My favorite animal is " + myFavoriteAnimal
@@ -26,7 +27,7 @@ describe("myAnimalWithLog", () => {
 // Exercise 3
 describe("myAnimalWithWarn", () => {
 	test("myAnimalWithWarn is declared and warn a string with your favorite animal", () => {
-		myAnimalWithWarn();
+		myAnimalWithWarn(myFavoriteAnimal);
 
 		expect(global.console.warn).toHaveBeenCalledWith(
 			"My favorite animal is " + myFavoriteAnimal
@@ -37,7 +38,7 @@ describe("myAnimalWithWarn", () => {
 // Exercise 4
 describe("myAnimalWithError", () => {
 	test("myAnimalWithError is declared and error a string with your favorite animal", () => {
-		myAnimalWithError();
+		myAnimalWithError(myFavoriteAnimal);
 
 		expect(global.console.error).toHaveBeenCalledWith(
 			"My favorite animal is " + myFavoriteAnimal
